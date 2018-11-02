@@ -2,4 +2,4 @@
 Project for WebSysDevelopment / FEAA
 
 
-Work in progress... Stil designing!
+Work in progress... Still designing!
