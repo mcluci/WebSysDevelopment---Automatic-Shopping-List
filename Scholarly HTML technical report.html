@@ -176,7 +176,7 @@
 		  from some online retailers in order to allow Apache Spark perform its task, and if necessary create the buy order.
         </p>
 			<figure typeof="sa:image" id="MainDesignFigure">
-			  <img src="images/MainDesignPoints2.png" alt="Main application design" width="auto" height="auto">
+			  <img src="images/MainDesignPoints2.png" alt="Main application design">
 			  <figcaption>Figure 1. Main Design</figcaption>
 			</figure>
       </section>
@@ -187,7 +187,7 @@
           In the following row we will present the main pinpoints that appear in the figure from the <a href="#Design">design section</a>:
         </p>
 		<section id="UntangleWebCache">
-		<h4><img class="pinpoint" src="images/pin1.png" alt="Pinpoint number 1." width="auto" height="auto"> Untangle Web Cache</h4>
+		<h4><img class="pinpoint" src="images/pin1.png" alt="Pinpoint number 1."> Untangle Web Cache</h4>
         <p>
           Once the user makes the https request to the server, <a href="https://www.untangle.com/">Untangle</a> will act as a
 		  web cache to reduce server lag and load, by providing already stored resources (either html, images or any other site asset) to
@@ -198,21 +198,21 @@
         </p>
 		</section>
 		<section id="NginxTSL">
-		<h4><img class="pinpoint" src="images/pin2.png" alt="Pinpoint number 2." width="auto" height="auto"> TSL implementation with Nginx</h4>
+		<h4><img class="pinpoint" src="images/pin2.png" alt="Pinpoint number 2."> TSL implementation with Nginx</h4>
         <p>
           Transport Layer Security (TLS) is the successor to Secure Socket Layer (SSL). It provides stronger and more efficient HTTPS, and contains enhancements not found in SSL such as Forward Secrecy, compatibility with modern OpenSSL cipher suites, and HSTS. Having this set in Nginx
 		  will secure upstream servers and ensure client data is safe.
         </p>
 		<section>
 		<section id="AWSLoadBalancer">
-		<h4><img class="pinpoint" src="images/pin3.png" alt="Pinpoint number 3." width="auto" height="auto"> AWS Load Balancer</h4>
+		<h4><img class="pinpoint" src="images/pin3.png" alt="Pinpoint number 3."> AWS Load Balancer</h4>
         <p>
           Using <a href="https://aws.amazon.com/elasticloadbalancing/features/?nc=sn&loc=2">AWS Elastic Load Balancer</a> will ensure great workload distribution among the main servers, both for hardware resources and network. Its Network Load Balancer is best suited for load balancing of TCP traffic where extreme performance is required. Operating at the connection level, Network Load Balancer routes traffic to targets within Amazon Virtual Private Cloud (Amazon VPC) and is capable of handling millions of requests per second while maintaining ultra-low latencies. Network Load Balancer is also optimized to handle sudden and volatile traffic patterns, if needed.
 		  A mention well note, we will use a hybrid cloud services and run most of our servers in AWS, as it also offer great <a href="https://aws.amazon.com/oracle/">support</a> for oracle.
         </p>
 		</section>
 		<section id="JBoss">
-		<h4><img class="pinpoint" src="images/pin4.png" alt="Pinpoint number 4." width="auto" height="auto"> Main servers - JBoss Enterprise Application Platform</h4>
+		<h4><img class="pinpoint" src="images/pin4.png" alt="Pinpoint number 4."> Main servers - JBoss Enterprise Application Platform</h4>
         <p>
           JBoss EAP is a subscription-based/open-source Java EE-based application server runtime platform used for building, deploying, and hosting highly-transactional Java applications and services.The JBoss Enterprise Application Platform is part of the JBoss Enterprise Middleware portfolio of software. Because it is Java-based, the JBoss application server operates across platforms; it can easily run on any operating system that supports Java and has great flexibility. 
 		  We motivate our choice also due to the fact that it has great compatibility and integration with Java based aplications, which will mainly 
@@ -221,7 +221,7 @@
         </p>
 		</section>
 		<section id="Solr">
-		<h4><img class="pinpoint" src="images/pin5.png" alt="Pinpoint number 5." width="auto" height="auto"> Solr for search mechanism</h4>
+		<h4><img class="pinpoint" src="images/pin5.png" alt="Pinpoint number 5."> Solr for search mechanism</h4>
         <p>
           As our products have a lot of features and characteristics, a good search engine is required. We have chosen Solr, due to its capabilities to 
 		  do full-text search, hit highlighting, faceted search, real-time indexing, dynamic clustering, database integration and rich document (e.g., Word, PDF) handling.
@@ -229,7 +229,7 @@
         </p>
 		</section>
 		<section id="Oracle">
-		<h4><img class="pinpoint" src="images/pin6.png" alt="Pinpoint number 6." width="auto" height="auto"> Oracle Database for transactions</h4>
+		<h4><img class="pinpoint" src="images/pin6.png" alt="Pinpoint number 6."> Oracle Database for transactions</h4>
         <p>
           NoSql databases might be nice, fast and flexible, but most of them lack support for transactions, and as our application will make such 
 		  transaction (purchase, refunds and others) it is highy important to use Oracle Database in order to ensure full transaction support (to ensure rollback, commit and othr operation).		  
@@ -238,7 +238,7 @@
         </p>
 		</section>
 		<section id="Spark">
-		<h4><img class="pinpoint" src="images/pin7.png" alt="Pinpoint number 7." width="auto" height="auto"> Apache Spark for product history</h4>
+		<h4><img class="pinpoint" src="images/pin7.png" alt="Pinpoint number 7."> Apache Spark for product history</h4>
         <p>
           Apache Spark is a fast in memory database (can also use just HDD is wanted) that could contain large databases, well over a petabyte. 
 		  This database will be use to store product prices and other characteristics that might just not fit our RDBMS (or have a huge performance impact).
@@ -247,7 +247,7 @@
         </p>
 		</section>
 		<section id="ApacheNutch">
-		<h4><img class="pinpoint" src="images/pin8.png" alt="Pinpoint number 8." width="auto" height="auto"> Apache Nutch Crawler</h4>
+		<h4><img class="pinpoint" src="images/pin8.png" alt="Pinpoint number 8."> Apache Nutch Crawler</h4>
         <p>
           As we will be scaning many retailer website, we will focus on the usage of crawlers. As we have a lot of apache product in our design
 		  we decided to go for Apache nutch. Apache Nutch is a highly extensible and scalable open source web crawler software project.
@@ -258,7 +258,7 @@
         </p>
 		<section>
 		<section id="Retailers">
-		<h4><img class="pinpoint" src="images/pin9.png" alt="Pinpoint number 9." width="auto" height="auto"> Retailers</h4>
+		<h4><img class="pinpoint" src="images/pin9.png" alt="Pinpoint number 9."> Retailers</h4>
         <p>
           Retailers websites and RSS is vital for our aplication, to avoid DDos false acusations, we will do our best to partnership or use as less
 		  invasive methods to gather data with the crawlers.
@@ -266,14 +266,14 @@
         </p>
 		</section>
 		<section id="CDN">
-		<h4><img class="pinpoint" src="images/pin10.png" alt="Pinpoint number 10." width="auto" height="auto"> Content delivery network for performance</h4>
+		<h4><img class="pinpoint" src="images/pin10.png" alt="Pinpoint number 10."> Content delivery network for performance</h4>
         <p>
           Amazon CloudFront is a content delivery network (CDN) made and delivered by Amazon through its services, on a pay as you go philosophy. Content delivery networks provide a globally-distributed network of proxy servers which cache content, such as web videos or other bulky media, more locally to consumers, thus improving access speed for downloading the content, which will allow better SEO and SEO ranking, not to mention less load on our servers which won't have to deliver performance costly images or video.
 		  CloudFront has servers all around the globe in all continents, which offers great performance and support. It is a bit costly though!
         </p>
 		</section>
 		<section id="Firewall">
-		<h4><img class="pinpoint" src="images/pin11.png" alt="Pinpoint number 11." width="auto" height="auto"> Firewall</h4>
+		<h4><img class="pinpoint" src="images/pin11.png" alt="Pinpoint number 11."> Firewall</h4>
         <p>
           Although not much control is given over our cloud hosted environments, a hybrid could environment does have some local machines, and we find appropiate to use Barracuda Firewall, due to its dual support, for both hardware and software. 
 		  Cloud firewall and security measures will also be used.
@@ -298,7 +298,7 @@
         </p>
         <p>
           <figure typeof="sa:image" id="searchProduct">
-			  <img src="images/SearchProduct.png" alt="Search page and characteristics" width="auto" height="auto">
+			  <img src="images/SearchProduct.png" alt="Search page and characteristics">
 			  <figcaption>Figure 2. Search Page Sketch</figcaption>
 			</figure>
         </p>
@@ -313,12 +313,12 @@
 		</p>
 		<p>
           <figure typeof="sa:image" id="productDetails">
-			  <img src="images/productDetail.png" alt="Product Details Page" width="auto" height="auto">
+			  <img src="images/productDetail.png" alt="Product Details Page">
 			  <figcaption>Figure 3. Product Details Page Sketch</figcaption>
 			</figure>
 			This page will include product images, product description, user comments and review, plus a graph containing the price history of the specific product for a certain period of time.
 			All the retailers owning such a product will be displayed bellow, together with their catalog price. Further sorting is allowed according to the price and retailer.
-			What we also integrated is the <i>Add to batch</i> which will create a batch order of automatic purchase, and will link module 1 to the <a href="#SecondModule">second module<a> which is described below.
+			What we also integrated is the <i>Add to batch</i> which will create a batch order of automatic purchase, and will link module 1 to the <a href="#SecondModule">second module</a> which is described below.
         </p>
       </section>
       <section id="SecondModule">
@@ -356,7 +356,7 @@
           The usage of third part APIs is mainly motivated by some advantages and cost reductions provided by them, such as the payment processor which increases security and reduces risk. 
 		  In the rows below we will describe all the third party APIs we intent to use.
 		    <figure typeof="sa:image" id="externalAPIs">
-			  <img src="images/DesignWithAPIs.png" alt="API Design" width="auto" height="auto">
+			  <img src="images/DesignWithAPIs.png" alt="API Design">
 			  <figcaption>Figure 4. Public APIs</figcaption>
 			</figure>
 			Although not included in the <a href="#MainDesignFigure">main aplication design</a>, the figure above refers to the way in which our services will connect to external public APIs.
@@ -393,8 +393,58 @@
 		</section>
 		<p>This Concludes our list of public APIs,</p>
       </section>
-
-      <section id="citations">
+	</section>
+	
+	<section id="Interface">
+		<h2>Interface</h2>
+		<section id="Main">
+			<h3>Main page</h3>
+			<p>
+				Our Interface will try to be as good as possible and to offer great compatibility across devices and be easy to read and use.
+				The image below shows a sketch of our homepage, we also used some images in order to try to make it look like a prototype.
+				<img src="images/main.png" alt="App Homepage">
+			</p>
+			Nothing much different than any retailer website, except for the tqo main modules, we described above. In the menu of our app, you will see <i>Pending Orders</i> and <i>Purchases</i> both having notifications, meaning that:
+			<ul>
+				<li>
+				Considering the green dot notification with number 1, we have a succesful automatic purchase, we can see in <a href="#autoPurchase">Automatic Purchase Page</a>
+				</li>
+				<li>
+				Considering the redd dot notification having number 2, we have 2 unsuccesfull or pending automatic purchases, we can see in <a href="#batchPurchaseStats">Automatic Purchase Order</a> page. 
+				This would mean that the price we set (or the range of prices) for a purchase order was not yet reach, and that the wanted product with its characteristics is still more expensive and we have to way for the price to drop in order to satisfy the set criterias.
+				</li>
+			</ul>
+		</section>
+		<section id="Modules">
+		<h3>Main Modules</h3>
+			<section id="ModuleOneDesign">
+				<h4>First Module</h4>
+				<p>Please refer to the structure design to see the first module.</p>
+				<ul>
+					<li>
+					<a href="#productDetails">Product Details and comparison page</a>
+					</li>
+					<li>
+					<a href="#searchProduct">Product Search page and its options</a>
+					</li>
+				</ul>
+			</section>
+			<section id="ModuleTwoDesign">
+				<h4>Second Module</h4>
+				<p>
+				The first part will include the order creation form, as shown in the image below:
+				<img src="images/createBatchPurchase.png" alt="batch Creation Form image 1">
+				It has 5 sections all drop-down, each having a scope. The first section is for chosing the products, setting its characteristics and features.
+				The second will allow you to set a price or a price range, according to your wishes.
+				The third, will allow you to chose from the retailers. Filtering by your wish.
+				Custom Rules is also added, but it is optional.
+				The last Section will redirect to Amazon Payments.
+				</p>
+			</section>
+		</section>
+	</section>
+	
+	  <section id="citations">
         <!-- review? -->
         <h3>Citations &amp; References</h3>
         <p>
@@ -519,16 +569,6 @@
         </p>
         <p class="issue">
           Providing a mapping to CSL would be extremely useful.
-        </p>
-      </section>
-      <section id="footnotes">
-        <!-- review? -->
-        <h3>Footnotes &amp; Endnotes</h3>
-        <p>
-          If the document has notes, they are listed in a <code>section</code> with the role of
-          <code>doc-endnotes</code>. The content of that <code>section</code> is an <code>h2</code>
-          title appropriate for it, followed by either a <code>ul</code> or <code>ol</code>. Each
-          <code>li</code> should be labeled with the role of <code>doc-endnote</code>.
         </p>
       </section>
   </body>
