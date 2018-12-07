@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>WebSys Midterm Deliverables</title>
+    <link rel="stylesheet" href="scholarly.min.css">
+  </head>
+  <body prefix="schema: http://schema.org">
+    <header>
+		<div id="top">WebSys Midterm Deliverable - Design 1</div>
+		<img id="logo-center" src="logo.png" alt="ShoppingList logo">
+		<div id="top-ending">end of label</div>
+    </header>
+	<hr>
+    <div role="contentinfo">
+	<h2>Table of Contents</h2>
+		<ol role="directory">
+		   <li><a href="#abstract"><span>1. </span>Abstract</a></li>
+		   <li><a href="#introduction"><span>2. </span>Introduction</a></li>
+		   <li>
+			  <a href="#structure"><span>3. </span>Structure</a>
+			  <ol role="directory">
+				 <li><a href="#Root"><span>3.1 </span>The root and <code>head</code></a></li>
+				 <li><a href="#article"><span>3.2 </span>The <code>article</code></a></li>
+				 <li>
+					<a href="#hunk"><span>3.3 </span>Hunk Elements</a>
+					<ol role="directory">
+					   <li><a href="#figures"><span>3.3.1 </span>Figures</a></li>
+					</ol>
+				 </li>
+				 <li><a href="#inline"><span>3.4 </span>Inline Elements</a></li>
+				 <li><a href="#references"><span>3.5 </span>References</a></li>
+				 <li><a href="#interactive"><span>3.6 </span>Interactive Elements</a></li>
+				 <li><a href="#HTMLRoles"><span>3.7 </span>HTML Roles</a></li>
+				 <li><a href="#validate"><span>3.8 </span>Validation</a></li>
+			  </ol>
+		   </li>
+		   <li>
+			  <a href="#semantics"><span>4. </span>Semantics Overlay</a>
+			  <ol role="directory">
+				 <li><a href="#person-org"><span>4.1 </span>Persons &amp; Organizations</a></li>
+				 <li><a href="#typing-sections"><span>4.2 </span>Typing Sections</a></li>
+				 <li><a href="#roles"><span>4.3 </span>Schema Roles</a></li>
+				 <li><a href="#actions"><span>4.4 </span>Actions</a></li>
+				 <li><a href="#article-title-semantics"><span>4.5 </span>Article and Title Semantics</a></li>
+				 <li>
+					<a href="#contentinfo-semantics"><span>4.6 </span>The <code>contentinfo</code> Region Semantics</a>
+					<ol role="directory">
+					   <li><a href="#authors"><span>4.6.1 </span>Authors &amp; Contributors</a></li>
+					   <li><a href="#affiliations"><span>4.6.2 </span>Affiliations</a></li>
+					   <li><a href="#abstract-etc"><span>4.6.3 </span>License, Copyright, Keywords, and Abstract</a></li>
+					   <li><a href="#meta-notes"><span>4.6.4 </span>Notes</a></li>
+					</ol>
+				 </li>
+				 <li><a href="#flavored-links"><span>4.7 </span>Flavored Links</a></li>
+				 <li><a href="#citations"><span>4.8 </span>Citations &amp; References</a></li>
+				 <li><a href="#footnotes"><span>4.9 </span>Footnotes &amp; Endnotes</a></li>
+				 <li><a href="#funding"><span>4.10 </span>Funding Information</a></li>
+				 <li><a href="#disclosures"><span>4.11 </span>Disclosures</a></li>
+				 <li><a href="#acknowledgements"><span>4.12 </span>Acknowledgements</a></li>
+			  </ol>
+		   </li>
+		   <li><a href="#scholarly-article"><span>5. </span>Scholarly Article Vocabulary</a></li>
+		   <li><a href="#hypermedia"><span>6. </span>Hypermedia Controls</a></li>
+		   <li><a href="#processing-model"><span>7. </span>Processing Model</a></li>
+		   <li><a href="#acks"><span>8. </span>Acknowledgements</a></li>
+		   <li><a href="#biblio-references"><span>9. </span>References</a></li>
+		</ol>
+      <dl>
+        <dt>Authors</dt>
+        <dd>
+          Marius-Iulian Cluci
+          <br />
+          <a href="https://www.linkedin.com/in/vasilica-mihai-horgot-b8ab02a6/?originalSubdomain=ro">Vasilica Mihai Horgot</a>
+		  <br />
+          <a href="https://www.linkedin.com/in/alexandra-alina-pavel-856278b0/?originalSubdomain=ro">Alexandra Alina Pavel</a>
+        </dd>
+        <dt>Bugs &amp; Feedback</dt>
+        <dd>
+          <a href="https://github.com/w3c/scholarly-html/issues">Issues and PRs welcome!</a>
+        </dd>
+        <dt>Issues and Discussions</dt>
+        <dd>
+          Our <a href="https://github.com/mcluci/WebSysDevelopment---Automatic-Shopping-List/issues">Team WebSys Project</a> 
+		  at <a href="https://github.com">github</a>
+          (<a href="https://github.com/mcluci/WebSysDevelopment---Automatic-Shopping-List/wiki/Contact">or email us</a>)
+        </dd>
+        <dt>License</dt>
+        <dd>
+          <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY</a>
+        </dd>
+      </dl>
+    </div>
+    <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+      <h2>Abstract</h2>
+      <p>
+        The following technical report will present the design of a web application made 
+		to search and follow prices of all popular e-commerce websites in order to find 
+		the best deals at best price. 
+		In the following pages we will present the tehnical design, wanted features,
+		options, modules and the third-party APIs we will incorporate in our application.
+		Our web app will try to automatically buy certain goods (electronics and other items)
+		with certain characteristics and price set by the user from different shops in the 
+		next 30 to 60 days time frame, using crawlers and other APIs to accomplish its task.
+      </p>
+    </section>
+    <section id="introduction" role="doc-introduction">
+      <!-- review? -->
+      <h2>Introduction</h2>
+      <p>
+        Nowadays we all buy goods online it is easy, fast and comfortable, but that doesn't mean
+		that we won't face issues, considering that we might have all sort of wants, like the color,
+		the brand, the model, and the tehnical characteristics of the product we might get a big headache
+		when we want to buy a certain thing. 
+		When you add the fact that there are many online retailers, things start to complicate a lot! 
+		According to <a href="https://www.statista.com/statistics/568735/e-commerce-website-visit-duration/">Statista</a>
+		in the third quarter of 2018 an average shopper spent aproximatively 4 minutes on a website visit
+		multiply that with the number of retailers visited and then you might get an aproximate of how much
+		we spend on online shopping. Can't we reduce this? 
+		Not to mention that the statistics show that in just 2.86 percent of e-commerce website visits are 
+		converted into purchases, as statistics <a href="https://www.statista.com/statistics/439576/online-shopper-conversion-rate-worldwide/">show.</a>
+		meaning that a lot of time is vasted on just searching products. 
+		
+      </p>
+      <p>
+		Although the price might not be the most important feature, we could rank it in top 3 most important
+		features in buying an item online. Thus, offering the smallest price to a customer is imperatively important.
+	    This is why we design the following app, in order to simplify things for the average shopper by
+		automating the purchase of certain goods, at a certain set price, or (if they want to buy on spot) at the
+		minimum price currently available on the market.
+	  </p>
+      <p>
+		Thus, the following pages will describe ShoppingList, an application meant to automatically buy 
+		wanted product at wanted prices using crawlers, non-sql databases and third-party payment processors.
+		We assumed 2 somehow similar main functionalities (modules) of this wesite. The first module will
+		readily be avaiable for our users to search and buy product at best prices from different retailers, 
+		and the second module will allow users to buy at a better price buy placing a batch job which for the next 30 to
+		60 days will scope the prices for that specific product in order to buy it at a price lower (or equal) to the one 
+		set by the user. 
+      </p>
+      <p>
+        Thus, the first module will refer to user willing to buy product as soon as possible
+		whilst the second module will be oriented to users willing to buy at a certain price and for whom
+		the waiting time is not as important. The second module might also refer to companies which could buy in bulk
+		at a much smaller price.
+      </p>
+      <p>
+        Our main website functions are:
+      </p>
+      <ul>
+        <li>Allow users to search products and find the retailer with the smallest price.</li>
+        <li>Allow users to compare prices accros retailers.</li>
+        <li>Allow users to create batch jobs that will automatically buy products at a set price in the following 30 to 60 days.</li>
+        <li>See a graph with changes in prices accros retailers.</li>
+        <li>Allow users to set as much wanted caracteristics to a automatic atch purchase.</li>
+      </ul>
+    </section>
+    <section id="structure">
+      <!-- review? -->
+      <h2>Structure</h2>
+      <p>
+        The internal design of our app is described in the <a href="#Design">design section</a> bellow, there you 
+		will also find an detailed exemplification of how the components will interact between each other. 
+		In this same section you will also find the two modules fully described with their main functionalities
+		and their core. Also all the third-party APIs used in the project will we described below, with the main emphasize 
+		on the payment processor.
+      </p>
+      <section id="Design">
+        <!-- review? -->
+        <h3>Overall Design</h3>
+        <p>
+          The figure below describes our main application design on a higher level. You will find some red numbered dots
+		  in it, those <a href="#Pinpoints">pinpoints</a> are later explained below in detail, for a better understanding of our ideas. The web aplication 
+		  will use multiple software solutions in order to fully function. What you will find different is the way in which the crawler fetches data
+		  from some online retailers in order to allow Apache Spark perform its task, and if necessary create the buy order.
+        </p>
+			<figure typeof="sa:image" id="MainDesignFigure">
+			  <img src="images/MainDesignPoints2.png" alt="Main application design" width="auto" height="auto">
+			  <figcaption>Figure 1. Main Design</figcaption>
+			</figure>
+      </section>
+      <section id="Pinpoints">
+        <!-- review? -->
+        <h3>Design Pinpoints</h3>
+        <p>
+          In the following row we will present the main pinpoints that appear in the figure from the <a href="#Design">design section</a>:
+        </p>
+		<section id="UntangleWebCache">
+		<h4><img class="pinpoint" src="images/pin1.png" alt="Pinpoint number 1." width="auto" height="auto"> Untangle Web Cache</h4>
+        <p>
+          Once the user makes the https request to the server, <a href="https://www.untangle.com/">Untangle</a> will act as a
+		  web cache to reduce server lag and load, by providing already stored resources (either html, images or any other site asset) to
+		  the user at a greater speed and less expense. Untangle has great performance and it should be granted several servers in order 
+		  to have enough resources to serve cached objects. Untangle is also a firewall, but we won't use it in this case, as pricing goes high
+		  and we are only interested into its high performance caching. Anyway, being a multi-function tool it offers great compatibility with other
+		  security related applications.
+        </p>
+		</section>
+		<section id="NginxTSL">
+		<h4><img class="pinpoint" src="images/pin2.png" alt="Pinpoint number 2." width="auto" height="auto"> TSL implementation with Nginx</h4>
+        <p>
+          Transport Layer Security (TLS) is the successor to Secure Socket Layer (SSL). It provides stronger and more efficient HTTPS, and contains enhancements not found in SSL such as Forward Secrecy, compatibility with modern OpenSSL cipher suites, and HSTS. Having this set in Nginx
+		  will secure upstream servers and ensure client data is safe.
+        </p>
+		<section>
+		<section id="AWSLoadBalancer">
+		<h4><img class="pinpoint" src="images/pin3.png" alt="Pinpoint number 3." width="auto" height="auto"> AWS Load Balancer</h4>
+        <p>
+          Using <a href="https://aws.amazon.com/elasticloadbalancing/features/?nc=sn&loc=2">AWS Elastic Load Balancer</a> will ensure great workload distribution among the main servers, both for hardware resources and network. Its Network Load Balancer is best suited for load balancing of TCP traffic where extreme performance is required. Operating at the connection level, Network Load Balancer routes traffic to targets within Amazon Virtual Private Cloud (Amazon VPC) and is capable of handling millions of requests per second while maintaining ultra-low latencies. Network Load Balancer is also optimized to handle sudden and volatile traffic patterns, if needed.
+		  A mention well note, we will use a hybrid cloud services and run most of our servers in AWS, as it also offer great <a href="https://aws.amazon.com/oracle/">support</a> for oracle.
+        </p>
+		</section>
+		<section id="JBoss">
+		<h4><img class="pinpoint" src="images/pin4.png" alt="Pinpoint number 4." width="auto" height="auto"> Main servers - JBoss Enterprise Application Platform</h4>
+        <p>
+          JBoss EAP is a subscription-based/open-source Java EE-based application server runtime platform used for building, deploying, and hosting highly-transactional Java applications and services.The JBoss Enterprise Application Platform is part of the JBoss Enterprise Middleware portfolio of software. Because it is Java-based, the JBoss application server operates across platforms; it can easily run on any operating system that supports Java and has great flexibility. 
+		  We motivate our choice also due to the fact that it has great compatibility and integration with Java based aplications, which will mainly 
+		  be the core of our web aplication. In plus, the subscription applies once you go in production, using these servers, which might cut costs.
+		  We might also use <a href="https://apacheignite.readme.io/v2.0/docs/memory-and-cache-metrics">Apache Ignite</a> to accelerate existing Relational and NoSQL databases with Ignite™ in-memory data grid and <a href="https://aws.amazon.com/elasticloadbalancing/features/?nc=sn&loc=2">caching capabilities</a>
+        </p>
+		</section>
+		<section id="Solr">
+		<h4><img class="pinpoint" src="images/pin5.png" alt="Pinpoint number 5." width="auto" height="auto"> Solr for search mechanism</h4>
+        <p>
+          As our products have a lot of features and characteristics, a good search engine is required. We have chosen Solr, due to its capabilities to 
+		  do full-text search, hit highlighting, faceted search, real-time indexing, dynamic clustering, database integration and rich document (e.g., Word, PDF) handling.
+		  Solr is very used in the market, and offers great support and fexibility being also free.
+        </p>
+		</section>
+		<section id="Oracle">
+		<h4><img class="pinpoint" src="images/pin6.png" alt="Pinpoint number 6." width="auto" height="auto"> Oracle Database for transactions</h4>
+        <p>
+          NoSql databases might be nice, fast and flexible, but most of them lack support for transactions, and as our application will make such 
+		  transaction (purchase, refunds and others) it is highy important to use Oracle Database in order to ensure full transaction support (to ensure rollback, commit and othr operation).		  
+		  All Oracle transactions obey the basic properties of a database transaction, known as ACID properties. Properties highly important when we speak
+		  of financial transactions, which are sensitive to us, to our customers and in front of the law.
+        </p>
+		</section>
+		<section id="Spark">
+		<h4><img class="pinpoint" src="images/pin7.png" alt="Pinpoint number 7." width="auto" height="auto"> Apache Spark for product history</h4>
+        <p>
+          Apache Spark is a fast in memory database (can also use just HDD is wanted) that could contain large databases, well over a petabyte. 
+		  This database will be use to store product prices and other characteristics that might just not fit our RDBMS (or have a huge performance impact).
+		  Thus the large amounts of data feed by our crawlers will be handled by Spark, where some task will also be performed in order to ensure one of our main functionality (automated buying).
+		  Furthermore, Spark supports streaming and machine learning alghoritms, which might prove handy in our case, or for future development. It is also free, can run in most cloud environments, and it has good compatibility with other systems.
+        </p>
+		</section>
+		<section id="ApacheNutch">
+		<h4><img class="pinpoint" src="images/pin8.png" alt="Pinpoint number 8." width="auto" height="auto"> Apache Nutch Crawler</h4>
+        <p>
+          As we will be scaning many retailer website, we will focus on the usage of crawlers. As we have a lot of apache product in our design
+		  we decided to go for Apache nutch. Apache Nutch is a highly extensible and scalable open source web crawler software project.
+		  The crawler will take all the information for all the list of products from the retailers, and send it to our Spark Database, where it will be
+		  stored, compare and matched with other characteristics.
+		  According to a <a href="http://www.cecs.uci.edu/~papers/ipdps07/pdfs/SMTPS-201-paper-1.pdf">IBM study</a> Apache Nutch clustering can get 
+		  awesome performance, yet to be achive by other crawlers and systems.
+        </p>
+		<section>
+		<section id="Retailers">
+		<h4><img class="pinpoint" src="images/pin9.png" alt="Pinpoint number 9." width="auto" height="auto"> Retailers</h4>
+        <p>
+          Retailers websites and RSS is vital for our aplication, to avoid DDos false acusations, we will do our best to partnership or use as less
+		  invasive methods to gather data with the crawlers.
+		  Whether it is fully possible or not, it is to be seen in the future.
+        </p>
+		</section>
+		<section id="CDN">
+		<h4><img class="pinpoint" src="images/pin10.png" alt="Pinpoint number 10." width="auto" height="auto"> Content delivery network for performance</h4>
+        <p>
+          Amazon CloudFront is a content delivery network (CDN) made and delivered by Amazon through its services, on a pay as you go philosophy. Content delivery networks provide a globally-distributed network of proxy servers which cache content, such as web videos or other bulky media, more locally to consumers, thus improving access speed for downloading the content, which will allow better SEO and SEO ranking, not to mention less load on our servers which won't have to deliver performance costly images or video.
+		  CloudFront has servers all around the globe in all continents, which offers great performance and support. It is a bit costly though!
+        </p>
+		</section>
+		<section id="Firewall">
+		<h4><img class="pinpoint" src="images/pin11.png" alt="Pinpoint number 11." width="auto" height="auto"> Firewall</h4>
+        <p>
+          Although not much control is given over our cloud hosted environments, a hybrid could environment does have some local machines, and we find appropiate to use Barracuda Firewall, due to its dual support, for both hardware and software. 
+		  Cloud firewall and security measures will also be used.
+        </p>
+		</section>
+      </section>
+      <section id="FirstModule">
+        <!-- review? -->
+        <h3>First Module - Price comparison</h3>
+        <p>
+          One of our most important function, is to provide our users with products having the lowest price on the market from all the specified retailers.
+		  Giving fast responses in this case would require to have the data already in the database (crawlers will take care of this at certain intervals
+		  of time). Historical data is as important as any other product characteristics, and we plan on giving a graph with historical prices from 
+		  all the scoped retailers. 
+		  Custom filtering on this search would be esential, Solr and Apach Spark will be responsible for this process.
+        </p>
+        <p>
+          The first part is represented by an advanced search, that will perform full-text search in our product database and list all available products.
+		  In the image from below you will see a list of different products. Only after clicking on one, you will be able to see a comparison of prices among retailers.
+		  In this page the price displayed is the lowest at the moment.
+		  
+        </p>
+        <p>
+          <figure typeof="sa:image" id="searchProduct">
+			  <img src="images/SearchProduct.png" alt="Search page and characteristics" width="auto" height="auto">
+			  <figcaption>Figure 2. Search Page Sketch</figcaption>
+			</figure>
+        </p>
+        <p>
+          As main functionalities, we have to highlight the left widget, which will allow good filtering options, according to any wanted characteristics, such as price, brand, color 
+		  and many more, depending by the product.
+		  The different models of the specific product will be listed.
+        </p>
+        <p>
+		Once a product is chosen, and <i>See offers</i> is clicked, the user will be redirected to the <i>Product Details Page</i> which is described below in the Figure 3. 
+		This page will have many functionalities, with its main being to display a list of prices sorted by each big retailer.
+		</p>
+		<p>
+          <figure typeof="sa:image" id="productDetails">
+			  <img src="images/productDetail.png" alt="Product Details Page" width="auto" height="auto">
+			  <figcaption>Figure 3. Product Details Page Sketch</figcaption>
+			</figure>
+			This page will include product images, product description, user comments and review, plus a graph containing the price history of the specific product for a certain period of time.
+			All the retailers owning such a product will be displayed bellow, together with their catalog price. Further sorting is allowed according to the price and retailer.
+			What we also integrated is the <i>Add to batch</i> which will create a batch order of automatic purchase, and will link module 1 to the <a href="#SecondModule">second module<a> which is described below.
+        </p>
+      </section>
+      <section id="SecondModule">
+        <!-- review? -->
+        <h3>Second Module - Automatic Purchases</h3>
+        <p>
+          Our second module, or core functionality is to allow the user to set automatic purchases of certain items at a fixed (or a range) of prices. The so called <i> automatic batch purchases</i> will represent one of our main competitive advantage.The use of third-party payment APIs and services will be esential in this case, as it will be very complicated to build such systems from scrath, not to mention the security risks and bugs involved, and the huge cost.Refer to <a href="#ThirdPartyAPI">APIs</a> for more. 
+		  The main functionalities of this core module are displayed below:
+		<ul>
+          <li>
+		  Automatic buying in the future (from 30 to 60 days);
+          </li>
+		  <li>
+		  Allow multiple items purchase in a <i>batch purchase</i> and combination of items;
+          </li>
+		  <li>
+		  Matching between wanted product features and the catalog of products from the retailers (tricky to do);
+          </li>
+		  <li>
+		  Include some logic in the buy orders (example: <code>If product IS green OR black THEN buy ELSE stop;</code>);
+          </li>
+		  <li>
+		  Use a payment processors to take the money from the client account and keep those money blocked until the product is bought, or the automatic purchase expires;
+          </li>
+		  <li>
+		  Allow SMS notifications and SMS buy approval <i>queries</i> from the user. (the user will receive a SMS in which he will be ask if he is willing to buy or not);
+          </li>
+        </ul>
+        </p>
+      </section>
+      <section id="ThirdPartyAPI">
+        <!-- review? -->
+        <h3>Third Party APIs</h3>
+        <p>
+          The usage of third part APIs is mainly motivated by some advantages and cost reductions provided by them, such as the payment processor which increases security and reduces risk. 
+		  In the rows below we will describe all the third party APIs we intent to use.
+		    <figure typeof="sa:image" id="externalAPIs">
+			  <img src="images/DesignWithAPIs.png" alt="API Design" width="auto" height="auto">
+			  <figcaption>Figure 4. Public APIs</figcaption>
+			</figure>
+			Although not included in the <a href="#MainDesignFigure">main aplication design</a>, the figure above refers to the way in which our services will connect to external public APIs.
+			These APIs are marked in the picture with orange connectors.
+        </p>
+		<section id="AmazonPay">
+			<h4>Amazon Pay</h4>
+			<p>
+			As a payment processor, Amazon pay offers great features, and can be either very easy to manage or, can be the perfect tool for a expert in finance and marketing, depending by your choice.
+			It has multi-platform support, and can be integrated in almost any app. Amazon Pay delivers a seamless checkout experience across desktop, mobile, and voice – making it easy for customers to make purchases wherever they are. It has great security and advanced encryption, an also it gives you certain insurances. Amazon Pay’s fast & easy checkout process, built on years of Amazon’s innovation in checkout optimization can help increase conversions & lower cart abandonments for buyers using their existing Amazon accounts. It also has fraud detection mechanisms and offers great support to you, and to your customers. 
+			It also offers easy monitoring, cost reductions and great performance with low latency and all around the glob distributed servers. It is one of the most important APIs which offers a great <a href="https://aws.amazon.com/api-gateway/?sc_channel=PS&sc_campaign=acquisition_RO&sc_publisher=google&sc_medium=api_gateway_b&sc_content=api_bmm&sc_detail=%2Bamazon%20%2Bapi&sc_category=api_gateway&sc_segment=158526582628&sc_matchtype=b&sc_country=RO&s_kwcid=AL!4422!3!158526582628!b!!g!!%2Bamazon%20%2Bapi&ef_id=EAIaIQobChMI043sjceN3wIVycmyCh2dXwRJEAAYASAAEgLdG_D_BwE:G:s">palete of features</a>.
+			</p>
+			<p>
+			The way in which Amazon Pay will connect can be see in <a href="#externalAPIs"> API Design</a>.
+			</p>
+		</section>
+		<section id="FacebookAPI">
+			<h4>Facebook Development API</h4>
+			<p>
+			Registring or login with facebook is a popular mean of account control these days, Facebook API is require to allow this connectivity, thus we must include it. Facebook API also offers great support for shareing pages, which is a great way in which we might gain more visits from social networks.
+			</p>
+		</section>
+		<section id="GoogleMaps">
+			<h4>GoogleMaps</h4>
+			<p>
+			This will allow the users to set a point to where the courier will deliver, or it will direct them to a physical shop or pick-up point.
+			</p>
+		</section>
+		<section id="GoogleAnalytics">
+			<h4>GoogleAnalytics</h4>
+			<p>
+			Google Analytics is now the most widely used web analytics service on the web. Google Analytics also provides an SDK that allows gathering usage data from iOS and Android Apps, known as Google Analytics for Mobile Apps.
+			</p>
+		</section>
+		<p>This Concludes our list of public APIs,</p>
+      </section>
+
+      <section id="citations">
+        <!-- review? -->
+        <h3>Citations &amp; References</h3>
+        <p>
+          Citations in scholarly articles provide a way to reference the work of others upon which
+          one builds. In the pre-Web era, they essentially served as links by carrying sufficient
+          information for one to find the reference in question, in a relatively compact manner.
+        </p>
+        <p>
+          In a Web world, it can seem tempting to simply replace citations with links, but there is
+          value in keeping the limited amount of metadata about the cited object that they provide
+          inlined in the document. Links rot and disappear; when that happens the rest of the
+          information can prove crucial in finding the referenced object at some other location.
+          Unique identifiers with indirect resolution, such as DOIs, might seem like a solution to
+          this problem but being opaque humans routinely get them wrong. (DOIs additionally suffer
+          from a single point of failure for resolution.) All things considered, including a link
+          for convenience and human-readable metadata about the referenced object is likely the
+          most resilient way to cite another document.
+        </p>
+        <p>
+          In the print universe, reducing the number of pages one needs to use can be a noticeable
+          cost-saver. Given that scholarly articles can easily feature dozens if not hundreds of
+          cited references, making use of compact reference conventions (as well as smaller font
+          sizes) made sense. Over time, however, what was a sensible idea degenerated into a
+          territorial maze of gratuitously heterogenous conventions to the point where there now
+          exist <a href="http://citationstyles.org/">over 8000 citation styles</a>.
+        </p>
+        <p>
+          There is no value in Scholarly HTML so much as attempting to support all citation styles.
+          The Web does not need the compactness. Citations and references should be both data-rich
+          and human-accessible, something on which the traditional formats fail, in some cases
+          quite spectacularly.
+        </p>
+        <p>
+          For accessibility purposes, Scholarly HTML recommends that references be formatted in such
+          a manner that they read naturally in the article’s natural language, with articulations
+          between the metadata parts, as below:
+        </p>
+        <figure typeof="schema:SoftwareSourceCode" resource="#citation-example" id="citation-example">
+          <pre><code>
+&lt;li typeof="schema:WebPage" role="doc-biblioentry"
+    resource="http://semver.org/"
+    property="schema:citation" id="some-id">
+ &lt;cite property="schema:name">
+   &lt;a href="http://semver.org/">Semantic Versioning 2.0.0&lt;/a>
+ &lt;/cite>,
+  by &lt;span property="schema:author" typeof="schema:Person">
+   &lt;span property="schema:givenName">Tom&lt;/span>
+   &lt;span property="schema:familyName">Preston-Werner&lt;/span>
+ &lt;/span>; published in
+ &lt;time property="schema:datePublished" datatype="xsd:gYear"
+       datetime="2014">2014&lt;/time>
+ &lt;span property="schema:potentialAction" typeof="schema:ReadAction">
+   &lt;meta property="schema:actionStatus" content="CompletedActionStatus">
+    (accessed on
+   &lt;time property="schema:endTime" datatype="xsd:date"
+         datetime="2016-02-01">01 Feb 2016&lt;/time>)
+ &lt;/span>.
+&lt;/li>
+          </code></pre>
+          <p>
+            The above code renders as:
+          </p>
+          <ol>
+            <li typeof="schema:WebPage" role="doc-biblioentry" resource="http://semver.org/"
+                property="schema:citation" id="some-id">
+              <cite property="schema:name">
+                <a href="http://semver.org/">Semantic Versioning 2.0.0</a>
+              </cite>,
+              by <span property="schema:author" typeof="schema:Person">
+                <span property="schema:givenName">Tom</span>
+                <span property="schema:familyName">Preston-Werner</span>
+              </span>; published in
+              <time property="schema:datePublished" datatype="xsd:gYear" datetime="2014">2014</time>
+              <span property="schema:potentialAction" typeof="schema:ReadAction">
+                <meta property="schema:actionStatus" content="CompletedActionStatus">
+                (accessed on
+                <time property="schema:endTime" datatype="xsd:date" datetime="2016-02-01">01 Feb 2016</time>)
+              </span>.
+            </li>
+          </ol>
+          <figcaption>
+            <span property="schema:name"></span>
+            <span property="schema:description">
+              Example of a readable citation.
+            </span>
+          </figcaption>
+        </figure>
+        <p>
+          The references section is simply a <code>section</code> with an appropriate heading,
+          containing an <code>ol</code>. Each <code>li</code> in the list follows a regular
+          structure: it has a <code>role</code> of <code>doc-biblioentry</code>, a
+          <code>resource</code> being the URL identifying the cited object, a <code>property</code>
+          of <a>schema:citation</a>, and <code>id</code> to make it linkable, and a
+          <code>typeof</code> capturing the kind of object that is being referenced (typically
+          <a>schema:ScholarlyArticle</a>, <a>schema:Book</a>, or <a>schema:WebPage</a> but there is
+          really no limit as to what may be cited).
+        </p>
+        <p>
+          The content of the <code>li</code> can be any <a role="doc-biblioref">RDFa</a> that
+          matches the <code>typeof</code>, but some good practices should be observed.
+        </p>
+        <p>
+          The title or name of the cited object should be in a <code>cite</code> element. If a link
+          is available, then the title should be linked. Date and time values (such as publication
+          or access date) should make use of the <code>time</code> element (further noting that
+          the <code>datatype</code> attribute can be used to express the granularity of the date as
+          in the example above).
+        </p>
+        <p>
+          While arbitrary metadata may be used, it is highly recommended to stick to
+          <a role="doc-biblioref">schema.org</a> and the
+          <a href="#scholarly-article">Scholarly Article</a> vocabularies. The reason for that is
+          that, should one wish to convert from Scholarly HTML citations into a specific print
+          format then it will be desirable to be able to reliably extract information from the
+          citations. This could be used for instance to produce <a role="doc-biblioref">CSL</a>
+          variables (as <a href="http://citationstyles.org/developers/">exemplified in the CSL
+          documentation</a>) and then use a CSL implementation in order to produce the output.
+        </p>
+        <p class="issue">
+          Should we be more constraining and define more precisely the constructs that are more
+          likely to interoperate?
+        </p>
+        <p class="issue">
+          Providing a mapping to CSL would be extremely useful.
+        </p>
+      </section>
+      <section id="footnotes">
+        <!-- review? -->
+        <h3>Footnotes &amp; Endnotes</h3>
+        <p>
+          If the document has notes, they are listed in a <code>section</code> with the role of
+          <code>doc-endnotes</code>. The content of that <code>section</code> is an <code>h2</code>
+          title appropriate for it, followed by either a <code>ul</code> or <code>ol</code>. Each
+          <code>li</code> should be labeled with the role of <code>doc-endnote</code>.
+        </p>
+      </section>
+  </body>
+</html>
