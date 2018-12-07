@@ -1,8 +1,5 @@
-# WebSysDevelopment---Automatic-Shopping-List
+# WebSysDevelopment-Automatic-Shopping-List
 Project for WebSysDevelopment / FEAA
 
-
-Work in progress... Still designing!
-============================PART1============================
-                    1.1 Overall design
-                    1.2 Scholarly HTML technical report
+You will find in the file windows the Scholary HTML Report. Please download!
+Work in progress, do not review until Friday 07 December 16.00!!!!!!!!!!!
