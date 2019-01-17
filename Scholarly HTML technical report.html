@@ -432,15 +432,17 @@
 		<p>This Concludes our list of public APIs,</p>
       </section>
 	  <section id="Flows">
-        <!-- review? -->
-        <h3>Architectural Considerations</h3>
+        <!--  -->
+        <h2>Architectural Considerations</h2>
         <p>
+		The parts presented below want to bring more considerations in the eyes of the viewer (experimented or novice) so that he would further understand the full concept. 
         </p>
 		<section id="IOFormat">
 			<h3>Input/Output data formats</h3>
 			<p>
-			</p>
-			<p>
+			The data sent and receive between the client, server and externals is of various formats. The data transfered between the server and the user is protected using different protocols and encryptions. The user is able to send and receive plain data in the html pages. 
+			The data exchanged between the server and the external retailers will be in Json format (our main application will be written in Java also) due to Json high customizations and flexibility. Furthermore, many crawlers work best in outputing such formats which allow better support for database categorization. 
+			The third party APIs (such as Amazon Pay) will offer certain web services that provide data in many formats, but mainly xml or json for larger transactions and data imports.
 			</p>
 		</section>
 		<section id="DataFlow">
@@ -499,9 +501,16 @@
 		<section id="TaskFlow">
 			<h3>TaskFlow</h3>
 			<p>
+			The taskflow presented below (<a href="#TaskFlowDiag">Figure 6</a>) resembles the path followed by the user that wants to add a planned order. This visual summary of broad types of tasks which is then broken down into series of smaller tasks to have a mapping of the related tasks so these tasks may then be executed easily. It provides a graphically represented order of the tasks to be performed from beginning until the end.
+			<figure typeof="sa:image" id="TaskFlowDiag">
+			  <img src="images/TaskFLow.png" alt="Data Flow Diagram">
+			  <figcaption>Figure 6. Task Flow</figcaption>
+			</figure>
 			</p>
 		</section>
-		<p>This Concludes our </p>
+		<p>
+		This Concludes our further arhitectural discussions. The above <a href="#DataFlow">Data flow</a> and <a href="#TaskFlow">Task flow</a> should bring more light in the eyes of the viewer, and furher understand the full extent of our arhitecture.
+		</p>
       </section>
 	</section>
     </section>
