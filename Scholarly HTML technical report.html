@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>WebSys Midterm Deliverables</title>
+    <title>WebSys Project Final</title>
     <link rel="stylesheet" href="scholarly.min.css">
   </head>
   <body prefix="schema: http://schema.org">
     <header>
-		<div id="top">WebSys Midterm Deliverable - Design 1</div>
+		<div id="top">WebSys Project - Design</div>
 		<img id="logo-center" src="logo.png" alt="ShoppingList logo">
 		<div id="top-ending">end of label</div>
     </header>
@@ -447,23 +447,54 @@
 			<h3>Data Flow</h3>
 			<p>
 			The main data flow of our most important module is presented in the figure below. The Diagram has been made in accordance 
-			to Gane & Sarson rules and figures and depicts the flow of data in our aplication.
+			to Gane & Sarson rules and figures and depicts the flow of data in our aplication. In the rows below we take the main parts
+			of the diagram and discuss them in-depth for further clarifications.
 			<figure typeof="sa:image" id="DataFlowDiag">
 			  <img src="images/DataFLow.png" alt="Data Flow Diagram">
 			  <figcaption>Figure 5. Data Flow</figcaption>
 			</figure>
 			</p>
 			<h4><img class="pinpoint" src="images/pin13.png" alt="Pinpoint number 13."> User Login</h4>
-			
+			<p>
+			In order to make a order the user must have a account with all the required informations (delivery address, phone number,
+			and other relevant details). Thus he must first log in with a valid account.
+			The data flown between the server and the user is secure with TSL and https, in order to protect the information passed from
+			the user to the server, and vice versa.
+			The user will just pass the account email / or pone number and password to enter its account. The server will only reply with a 
+			confirmation or rejection of credentials. Later on, the user could change the account details from the account settings page.
+			</p>
 			<h4><img class="pinpoint" src="images/pin14.png" alt="Pinpoint number 14."> Add purchase plan (or batch)</h4>
-		
+			<p>
+			Now, the client can plan a automatic future purchase of a wanted product, set the required product details, prefered retailers
+			and set a price limit. All this information is processed by our application (within the process called in our diagram "Planned
+			Purchase") and the specfications set by our client is inserted in a table where it will stay according to the client settings (30 to 60 days accordingly).
+			This process ensures that all the set data is correct and the plan is prepared for the other processes which will try to match 
+			products according to the specified details and price.
+			</p>
 			<h4><img class="pinpoint" src="images/pin15.png" alt="Pinpoint number 15."> Funds Collection</h4>
-			
+			<p>
+			Considering that we seek the smallest prices and offers, we must be quick in buying the products, thus the pay is asked in advance. In this way, we will be sure to have the required money before buying. But, considering that it is very riscky to work with such secure money transfers, and the development will require plenty resources, we decided to use a third-party API named Amazon Pay which will ensure money transfer and refunds. 
+			Keep in mind that if there is no product purchase the money will be transfered back within the required number of days (the client supports the transfer charges). 
+			The data which is transfered in this step is very simple, the client is redirected with an id to the third-party API, where the data transfered there is not of our interest, but the API will get back to use with a response in which will specify if the transfer is successful or not. After this the planned buy order is added in the batch processing, where it could conclude in a purchase.
+			Further data will be requested, and other operations might be required, such as refunds.
+			</p>
 			<h4><img class="pinpoint" src="images/pin16.png" alt="Pinpoint number 16."> Daily Price Comparation</h4>
-			
+			<p>
+			If for the process 1, 2 and 3 the data is transfered between the client and the server, at process number 4 the data is transfered between the server and other retailers with the help of a crawler (and some RSS informations). 
+			The crawler will gather thousands of product details and prices, and will classify and insert those information in the database. When new data is inserted for some products, specific triggers will order a price comparisson for those 
+			Thus, our application will run at constant time making comparissons between the prices (& details) and the planned purchase orders to ensure that we don't miss an offer for our clients and make as much purchases as possible. 
+			</p>
 			<h4><img class="pinpoint" src="images/pin17.png" alt="Pinpoint number 17."> Crawlers Gather Data</h4>
-			
+			<p>
+			As better described in process 4, the Crawler(s) will gather data from the retailers, either by analyzing the RSS feed or by using (if available) special pages (that are subject of a written cooperation between us and the retail). Much of the data is transfered between the server and the retailer.
+			The collected data will also be categorized in this step for best practices and performance. 
+			</p>
 			<h4><img class="pinpoint" src="images/pin18.png" alt="Pinpoint number 18."> Return Scenario</h4>
+			<p>
+			It is quite clear that not all planned purchases will be accomplished, thus money should be returned to the client. 
+			I this case data is exchanged between us and the Amazon Pay API in order to order to money refund. Data will also be exchanged between in and the client in the matter of a email or website posting, in which we inform the user of our actions.
+			In the case in which the client had the purchase done, but he wants to return the product from various reasons, the scenario might be a bit more complicated, as data needs to be transfered to the retailers also. The request will be automatically processes, in order to ensure the product return. The money will get back straight to the client account, in order to avoid Amazon Pay fees.
+			</p>
 		</section>
 		<section id="TaskFlow">
 			<h3>TaskFlow</h3>
