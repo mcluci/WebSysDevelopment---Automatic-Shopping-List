@@ -1,4 +1,5 @@
 # WebSysDevelopment-Automatic-Shopping-List
+<p align="center">
 Project for WebSysDevelopment / FEAA
 ![alt text](https://raw.githubusercontent.com/mcluci/WebSysDevelopment---Automatic-Shopping-List/master/Logo.PNG)
 <div style="display:block;text-align:center;">
@@ -12,12 +13,4 @@ Please <b>download</b> and open the Scholary HTML for best experience! Otherwise
 <br/> Horgot Vasile Mihai
 <br/> Finica Alexandra Alina cas. Pavel
 <br/> 
-</div>
-<p align="center">
-  <b>Some Links:</b><br>
-  <a href="#">Link 1</a> |
-  <a href="#">Link 2</a> |
-  <a href="#">Link 3</a>
-  <br><br>
-  <img src="https://raw.githubusercontent.com/mcluci/WebSysDevelopment---Automatic-Shopping-List/master/Logo.PNG">
 </p>
