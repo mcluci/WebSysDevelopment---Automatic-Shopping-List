@@ -1,5 +1,4 @@
 # WebSysDevelopment-Automatic-Shopping-List
-<span style="display:block;text-align:center">![alt text](https://raw.githubusercontent.com/mcluci/WebSysDevelopment---Automatic-Shopping-List/master/Logo.PNG)</span>
 <br/>
 <p align="center"> 
 <img src="https://raw.githubusercontent.com/mcluci/WebSysDevelopment---Automatic-Shopping-List/master/Logo.PNG">
