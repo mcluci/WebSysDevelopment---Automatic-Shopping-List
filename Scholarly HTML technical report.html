@@ -136,7 +136,7 @@
         The following technical report will present the design of a web application made 
 		to search and follow prices of all popular e-commerce websites in order to find 
 		the best deals at best price. 
-		In the following pages we will present the tehnical design, wanted features,
+		In the following pages we will present the technical design, wanted features,
 		options, modules and the third-party APIs we will incorporate in our application.
 		Our web app will try to automatically buy certain goods (electronics and other items)
 		with certain characteristics and price set by the user from different shops in the 
@@ -149,16 +149,16 @@
       <p>
         Nowadays we all buy goods online it is easy, fast and comfortable, but that doesn't mean
 		that we won't face issues, considering that we might have all sort of wants, like the color,
-		the brand, the model, and the tehnical characteristics of the product we might get a big headache
+		the brand, the model, and the technical characteristics of the product we might get a big headache
 		when we want to buy a certain thing. 
 		When you add the fact that there are many online retailers, things start to complicate a lot! 
 		According to <a href="https://www.statista.com/statistics/568735/e-commerce-website-visit-duration/">Statista</a>
-		in the third quarter of 2018 an average shopper spent aproximatively 4 minutes on a website visit
-		multiply that with the number of retailers visited and then you might get an aproximate of how much
+		in the third quarter of 2018 an average shopper spent approximatively 4 minutes on a website visit
+		multiply that with the number of retailers visited and then you might get an approximate of how much
 		we spend on online shopping. Can't we reduce this? 
 		Not to mention that the statistics show that in just 2.86 percent of e-commerce website visits are 
 		converted into purchases, as statistics <a href="https://www.statista.com/statistics/439576/online-shopper-conversion-rate-worldwide/">show.</a>
-		meaning that a lot of time is vasted on just searching products. 
+		meaning that a lot of time is wasted on just searching products. 
 		
       </p>
       <p>
@@ -171,8 +171,8 @@
       <p>
 		Thus, the following pages will describe ShoppingList, an application meant to automatically buy 
 		wanted product at wanted prices using crawlers, non-sql databases and third-party payment processors.
-		We assumed 2 somehow similar main functionalities (modules) of this wesite. The first module will
-		readily be avaiable for our users to search and buy product at best prices from different retailers, 
+		We assumed 2 somehow similar main functionalities (modules) of this website. The first module will
+		readily be available for our users to search and buy product at best prices from different retailers, 
 		and the second module will allow users to buy at a better price buy placing a batch job which for the next 30 to
 		60 days will scope the prices for that specific product in order to buy it at a price lower (or equal) to the one 
 		set by the user. 
@@ -188,10 +188,10 @@
       </p>
       <ul>
         <li>Allow users to search products and find the retailer with the smallest price.</li>
-        <li>Allow users to compare prices accros retailers.</li>
+        <li>Allow users to compare prices across retailers.</li>
         <li>Allow users to create batch jobs that will automatically buy products at a set price in the following 30 to 60 days.</li>
-        <li>See a graph with changes in prices accros retailers.</li>
-        <li>Allow users to set as much wanted caracteristics to a automatic atch purchase.</li>
+        <li>See a graph with changes in prices across retailers.</li>
+        <li>Allow users to set as much wanted characteristics to a automatic batch purchase.</li>
       </ul>
     </section>
     <section id="structure">
@@ -209,7 +209,7 @@
         <h3>Overall Design</h3>
         <p>
           The figure below describes our main application design on a higher level. You will find some red numbered dots
-		  in it, those <a href="#Pinpoints">pinpoints</a> are later explained below in detail, for a better understanding of our ideas. The web aplication 
+		  in it, those <a href="#Pinpoints">pinpoints</a> are later explained below in detail, for a better understanding of our ideas. The web application 
 		  will use multiple software solutions in order to fully function. What you will find different is the way in which the crawler fetches data
 		  from some online retailers in order to allow Apache Spark perform its task, and if necessary create the buy order.
         </p>
@@ -253,8 +253,8 @@
 		<h4><img class="pinpoint" src="images/pin4.png" alt="Pinpoint number 4."> Main servers - JBoss Enterprise Application Platform</h4>
         <p>
           JBoss EAP is a subscription-based/open-source Java EE-based application server runtime platform used for building, deploying, and hosting highly-transactional Java applications and services.The JBoss Enterprise Application Platform is part of the JBoss Enterprise Middleware portfolio of software. Because it is Java-based, the JBoss application server operates across platforms; it can easily run on any operating system that supports Java and has great flexibility. 
-		  We motivate our choice also due to the fact that it has great compatibility and integration with Java based aplications, which will mainly 
-		  be the core of our web aplication. In plus, the subscription applies once you go in production, using these servers, which might cut costs.
+		  We motivate our choice also due to the fact that it has great compatibility and integration with Java based applications, which will mainly 
+		  be the core of our web application. In plus, the subscription applies once you go in production, using these servers, which might cut costs.
 		  We might also use <a href="https://apacheignite.readme.io/v2.0/docs/memory-and-cache-metrics">Apache Ignite</a> to accelerate existing Relational and NoSQL databases with Ignite™ in-memory data grid and <a href="https://aws.amazon.com/elasticloadbalancing/features/?nc=sn&loc=2">caching capabilities</a>
         </p>
 		</section>
@@ -263,14 +263,14 @@
         <p>
           As our products have a lot of features and characteristics, a good search engine is required. We have chosen Solr, due to its capabilities to 
 		  do full-text search, hit highlighting, faceted search, real-time indexing, dynamic clustering, database integration and rich document (e.g., Word, PDF) handling.
-		  Solr is very used in the market, and offers great support and fexibility being also free.
+		  Solr is very used in the market, and offers great support and flexibility being also free.
         </p>
 		</section>
 		<section id="Oracle">
 		<h4><img class="pinpoint" src="images/pin6.png" alt="Pinpoint number 6."> Oracle Database for transactions</h4>
         <p>
           NoSql databases might be nice, fast and flexible, but most of them lack support for transactions, and as our application will make such 
-		  transaction (purchase, refunds and others) it is highy important to use Oracle Database in order to ensure full transaction support (to ensure rollback, commit and othr operation).		  
+		  transaction (purchase, refunds and others) it is highly important to use Oracle Database in order to ensure full transaction support (to ensure rollback, commit and other operation).		  
 		  All Oracle transactions obey the basic properties of a database transaction, known as ACID properties. Properties highly important when we speak
 		  of financial transactions, which are sensitive to us, to our customers and in front of the law.
         </p>
@@ -281,24 +281,24 @@
           Apache Spark is a fast in memory database (can also use just HDD is wanted) that could contain large databases, well over a petabyte. 
 		  This database will be use to store product prices and other characteristics that might just not fit our RDBMS (or have a huge performance impact).
 		  Thus the large amounts of data feed by our crawlers will be handled by Spark, where some task will also be performed in order to ensure one of our main functionality (automated buying).
-		  Furthermore, Spark supports streaming and machine learning alghoritms, which might prove handy in our case, or for future development. It is also free, can run in most cloud environments, and it has good compatibility with other systems.
+		  Furthermore, Spark supports streaming and machine learning alghorithms, which might prove handy in our case, or for future development. It is also free, can run in most cloud environments, and it has good compatibility with other systems.
         </p>
 		</section>
 		<section id="ApacheNutch">
 		<h4><img class="pinpoint" src="images/pin8.png" alt="Pinpoint number 8."> Apache Nutch Crawler</h4>
         <p>
-          As we will be scaning many retailer website, we will focus on the usage of crawlers. As we have a lot of apache product in our design
+          As we will be scanning many retailer website, we will focus on the usage of crawlers. As we have a lot of apache product in our design
 		  we decided to go for Apache nutch. Apache Nutch is a highly extensible and scalable open source web crawler software project.
 		  The crawler will take all the information for all the list of products from the retailers, and send it to our Spark Database, where it will be
 		  stored, compare and matched with other characteristics.
 		  According to a <a href="http://www.cecs.uci.edu/~papers/ipdps07/pdfs/SMTPS-201-paper-1.pdf">IBM study</a> Apache Nutch clustering can get 
-		  awesome performance, yet to be achive by other crawlers and systems.
+		  awesome performance, yet to be achieve by other crawlers and systems.
         </p>
 		</section>
 		<section id="Retailers">
 		<h4><img class="pinpoint" src="images/pin9.png" alt="Pinpoint number 9."> Retailers</h4>
         <p>
-          Retailers websites and RSS is vital for our aplication, to avoid DDos false acusations, we will do our best to partnership or use as less
+          Retailers websites and RSS is vital for our application, to avoid DDos false accusations, we will do our best to partnership or use as less
 		  invasive methods to gather data with the crawlers.
 		  Whether it is fully possible or not, it is to be seen in the future.
         </p>
@@ -313,7 +313,7 @@
 		<section id="Firewall">
 		<h4><img class="pinpoint" src="images/pin11.png" alt="Pinpoint number 11."> Firewall</h4>
         <p>
-          Although not much control is given over our cloud hosted environments, a hybrid could environment does have some local machines, and we find appropiate to use Barracuda Firewall, due to its dual support, for both hardware and software. 
+          Although not much control is given over our cloud hosted environments, a hybrid could environment does have some local machines, and we find appropriate to use Barracuda Firewall, due to its dual support, for both hardware and software. 
 		  Cloud firewall and security measures will also be used.
         </p>
 		</section>
@@ -326,7 +326,7 @@
 		  Giving fast responses in this case would require to have the data already in the database (crawlers will take care of this at certain intervals
 		  of time). Historical data is as important as any other product characteristics, and we plan on giving a graph with historical prices from 
 		  all the scoped retailers. 
-		  Custom filtering on this search would be esential, Solr and Apache Spark will be responsible for this process.
+		  Custom filtering on this search would be essential, Solr and Apache Spark will be responsible for this process.
         </p>
         <p>
           The first part is represented by an advanced search, that will perform full-text search in our product database and list all available products.
@@ -363,7 +363,7 @@
         <!-- Modules -->
         <h3>Second Module - Automatic Purchases</h3>
         <p>
-          Our second module, or core functionality is to allow the user to set automatic purchases of certain items at a fixed (or a range) of prices. The so called <i> automatic batch purchases</i> will represent one of our main competitive advantage.The use of third-party payment APIs and services will be esential in this case, as it will be very complicated to build such systems from scrath, not to mention the security risks and bugs involved, and the huge cost.Refer to <a href="#ThirdPartyAPI">APIs</a> for more. 
+          Our second module, or core functionality is to allow the user to set automatic purchases of certain items at a fixed (or a range) of prices. The so called <i> automatic batch purchases</i> will represent one of our main competitive advantage. The use of third-party payment APIs and services will be essential in this case, as it will be very complicated to build such systems from scratch, not to mention the security risks and bugs involved, and the huge cost.Refer to <a href="#ThirdPartyAPI">APIs</a> for more. 
 		  The main functionalities of this core module are displayed below:
 		<ul>
           <li>
@@ -414,7 +414,7 @@
 		<section id="FacebookAPI">
 			<h4>Facebook Development API</h4>
 			<p>
-			Registring or login with facebook is a popular mean of account control these days, Facebook API is require to allow this connectivity, thus we must include it. Facebook API also offers great support for shareing pages, which is a great way in which we might gain more visits from social networks.
+			Registring or login with facebook is a popular mean of account control these days, Facebook API is require to allow this connectivity, thus we must include it. Facebook API also offers great support for sharing pages, which is a great way in which we might gain more visits from social networks.
 			</p>
 		</section>
 		<section id="GoogleMaps">
@@ -440,9 +440,9 @@
 		<section id="IOFormat">
 			<h3>Input/Output data formats</h3>
 			<p>
-			The data sent and receive between the client, server and externals is of various formats. The data transfered between the server and the user is protected using different protocols and encryptions. The user is able to send and receive plain data in the html pages. 
-			The data exchanged between the server and the external retailers will be in Json format (our main application will be written in Java also) due to Json high customizations and flexibility. Furthermore, many crawlers work best in outputing such formats which allow better support for database categorization. 
-			The third party APIs (such as Amazon Pay) will offer certain web services that provide data in many formats, but mainly xml or json for larger transactions and data imports.
+			The data sent and receive between the client, server and externals is of various formats. The data transferred between the server and the user is protected using different protocols and encryptions. The user is able to send and receive plain data in the html pages. 
+			The data exchanged between the server and the external retailers will be in Json format (our main application will be written in Java also) due to Json high customizations and flexibility. Furthermore, many crawlers work best in outputting such formats which allow better support for database categorization. 
+			The third party APIs (such as Amazon Pay) will offer certain web services that provide data in many formats, but mainly XML or Json for larger transactions and data imports.
 			</p>
 		</section>
 		<section id="DataFlow">
@@ -467,7 +467,7 @@
 			</p>
 			<h4><img class="pinpoint" src="images/pin14.png" alt="Pinpoint number 14."> Add purchase plan (or batch)</h4>
 			<p>
-			Now, the client can plan a automatic future purchase of a wanted product, set the required product details, prefered retailers
+			Now, the client can plan a automatic future purchase of a wanted product, set the required product details, preferred retailers
 			and set a price limit. All this information is processed by our application (within the process called in our diagram "Planned
 			Purchase") and the specfications set by our client is inserted in a table where it will stay according to the client settings (30 to 60 days accordingly).
 			This process ensures that all the set data is correct and the plan is prepared for the other processes which will try to match 
@@ -475,27 +475,27 @@
 			</p>
 			<h4><img class="pinpoint" src="images/pin15.png" alt="Pinpoint number 15."> Funds Collection</h4>
 			<p>
-			Considering that we seek the smallest prices and offers, we must be quick in buying the products, thus the pay is asked in advance. In this way, we will be sure to have the required money before buying. But, considering that it is very riscky to work with such secure money transfers, and the development will require plenty resources, we decided to use a third-party API named Amazon Pay which will ensure money transfer and refunds. 
-			Keep in mind that if there is no product purchase the money will be transfered back within the required number of days (the client supports the transfer charges). 
-			The data which is transfered in this step is very simple, the client is redirected with an id to the third-party API, where the data transfered there is not of our interest, but the API will get back to use with a response in which will specify if the transfer is successful or not. After this the planned buy order is added in the batch processing, where it could conclude in a purchase.
+			Considering that we seek the smallest prices and offers, we must be quick in buying the products, thus the pay is asked in advance. In this way, we will be sure to have the required money before buying. But, considering that it is very ricky to work with such secure money transfers, and the development will require plenty resources, we decided to use a third-party API named Amazon Pay which will ensure money transfer and refunds. 
+			Keep in mind that if there is no product purchase the money will be transferred back within the required number of days (the client supports the transfer charges). 
+			The data which is transferred in this step is very simple, the client is redirected with an id to the third-party API, where the data transferred there is not of our interest, but the API will get back to use with a response in which will specify if the transfer is successful or not. After this the planned buy order is added in the batch processing, where it could conclude in a purchase.
 			Further data will be requested, and other operations might be required, such as refunds.
 			</p>
 			<h4><img class="pinpoint" src="images/pin16.png" alt="Pinpoint number 16."> Daily Price Comparation</h4>
 			<p>
-			If for the process 1, 2 and 3 the data is transfered between the client and the server, at process number 4 the data is transfered between the server and other retailers with the help of a crawler (and some RSS informations). 
+			If for the process 1, 2 and 3 the data is transferred between the client and the server, at process number 4 the data is transferred between the server and other retailers with the help of a crawler (and some RSS informations). 
 			The crawler will gather thousands of product details and prices, and will classify and insert those information in the database. When new data is inserted for some products, specific triggers will order a price comparisson for those 
-			Thus, our application will run at constant time making comparissons between the prices (& details) and the planned purchase orders to ensure that we don't miss an offer for our clients and make as much purchases as possible. 
+			Thus, our application will run at constant time making comparisons between the prices (& details) and the planned purchase orders to ensure that we don't miss an offer for our clients and make as much purchases as possible. 
 			</p>
 			<h4><img class="pinpoint" src="images/pin17.png" alt="Pinpoint number 17."> Crawlers Gather Data</h4>
 			<p>
-			As better described in process 4, the Crawler(s) will gather data from the retailers, either by analyzing the RSS feed or by using (if available) special pages (that are subject of a written cooperation between us and the retail). Much of the data is transfered between the server and the retailer.
+			As better described in process 4, the Crawler(s) will gather data from the retailers, either by analyzing the RSS feed or by using (if available) special pages (that are subject of a written cooperation between us and the retail). Much of the data is transferred between the server and the retailer.
 			The collected data will also be categorized in this step for best practices and performance. 
 			</p>
 			<h4><img class="pinpoint" src="images/pin18.png" alt="Pinpoint number 18."> Return Scenario</h4>
 			<p>
 			It is quite clear that not all planned purchases will be accomplished, thus money should be returned to the client. 
 			I this case data is exchanged between us and the Amazon Pay API in order to order to money refund. Data will also be exchanged between in and the client in the matter of a email or website posting, in which we inform the user of our actions.
-			In the case in which the client had the purchase done, but he wants to return the product from various reasons, the scenario might be a bit more complicated, as data needs to be transfered to the retailers also. The request will be automatically processes, in order to ensure the product return. The money will get back straight to the client account, in order to avoid Amazon Pay fees.
+			In the case in which the client had the purchase done, but he wants to return the product from various reasons, the scenario might be a bit more complicated, as data needs to be transferred to the retailers also. The request will be automatically processes, in order to ensure the product return. The money will get back straight to the client account, in order to avoid Amazon Pay fees.
 			</p>
 		</section>
 		<section id="TaskFlow">
@@ -509,7 +509,7 @@
 			</p>
 		</section>
 		<p>
-		This Concludes our further arhitectural discussions. The above <a href="#DataFlow">Data flow</a> and <a href="#TaskFlow">Task flow</a> should bring more light in the eyes of the viewer, and furher understand the full extent of our arhitecture.
+		This Concludes our further architectural discussions. The above <a href="#DataFlow">Data flow</a> and <a href="#TaskFlow">Task flow</a> should bring more light in the eyes of the viewer, and furher understand the full extent of our architecture.
 		</p>
       </section>
 	</section>
@@ -524,10 +524,10 @@
 				The image below shows a sketch of our homepage, we also used some images in order to try to make it look like a prototype.
 				<img src="images/main.png" alt="App Homepage">
 			</p>
-			Nothing much different than any retailer website, except for the tqo main modules, we described above. In the menu of our app, you will see <i>Pending Orders</i> and <i>Purchases</i> both having notifications, meaning that:
+			Nothing much different than any retailer website, except for the two main modules, we described above. In the menu of our app, you will see <i>Pending Orders</i> and <i>Purchases</i> both having notifications, meaning that:
 			<ul>
 				<li>
-				Considering the green dot notification with number 1, we have a succesful automatic purchase, we can see in <a href="#autoPurchase">Automatic Purchase Page</a>
+				Considering the green dot notification with number 1, we have a successful automatic purchase, we can see in <a href="#autoPurchase">Automatic Purchase Page</a>
 				</li>
 				<li>
 				Considering the redd dot notification having number 2, we have 2 unsuccesfull or pending automatic purchases, we can see in <a href="#batchPurchaseStats">Automatic Purchase Order</a> page. 
