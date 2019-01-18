@@ -3,7 +3,10 @@ Project for WebSysDevelopment / FEAA
 <br/>
 Please <b>download</b> and open the Scholary HTML for best experience! Otherwise the images won't load!
 <br/> It includes Part 1 and Part 2 of the projet! (The User Guide is incorporated in the Scholary HTML)
-<br/> Srudents:
+<br/>
+<br/>
+<br/> Students:
 <br/> Cluci Marius-Iulian
 <br/> Horgot Vasile Mihai
-<br/> Finica Alexandra Alina
+<br/> Finica Alexandra Alina cas. Pavel
+<br/> 
