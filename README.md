@@ -1,8 +1,6 @@
 # WebSysDevelopment-Automatic-Shopping-List
-
-<p align="center">Project for WebSysDevelopment / FEAA</p>
-<br/>
 ![alt text](https://raw.githubusercontent.com/mcluci/WebSysDevelopment---Automatic-Shopping-List/master/Logo.PNG)
+<p align="center">Project for WebSysDevelopment / FEAA</p>
 <div style="display:block;text-align:center;">
 <br/><img href="https://raw.githubusercontent.com/mcluci/WebSysDevelopment---Automatic-Shopping-List/master/Logo.PNG"></img>
 <p align="center">
