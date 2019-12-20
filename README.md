@@ -8,9 +8,7 @@
 <br/>
 <br/>
 <br/> Students:
-<br/> Cluci Marius-Iulian
-<br/> Horgot Vasile Mihai
-<br/> Finica Alexandra Alina cas. Pavel
+<br/> CMI
 <br/> 
 </p>
 Project ended! Thank you!
